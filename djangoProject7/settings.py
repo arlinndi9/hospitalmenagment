@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'hospitals.middleware.SetUsernameCookieMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject7.urls'
@@ -113,7 +114,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+LOGOUT_REDIRECT_URL='index'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 

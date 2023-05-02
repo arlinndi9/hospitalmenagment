@@ -1,5 +1,8 @@
 from django.db import models
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+from datetime import date
+
 # Create your models here.
 
 class Doctor(models.Model):
@@ -10,8 +13,9 @@ class Doctor(models.Model):
         ('Nursing ','Nursing '),
     )
     name = models.CharField(max_length=50)
-    mobile = models.IntegerField(validators=[MaxValueValidator(10)],null=True)
+    mobile = models.IntegerField(null=True)
     special = models.CharField(max_length=255, choices=specializimet,default='')
+    photo=models.ImageField(upload_to='static/images',null=True)
 
     def __str__(self):
        return self.name
@@ -44,3 +48,14 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+class Appointmentuser(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    firstname=models.CharField(max_length=255,null=True)
+    lastname=models.CharField(max_length=255,null=True)
+    email=models.EmailField()
+    date = models.DateField()
+    time = models.TimeField()
+
+    def __str__(self):
+        return self.doctor.name+"--"+self.firstname

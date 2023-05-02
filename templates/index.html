@@ -7,7 +7,7 @@
     .jumbotron {
       width : 100%;
       height : 550px;
-      background-image: url('{% static "images/h3.png" %}');
+      background-image: url('{% static "images/h3.jpg" %}');
       background-size: cover;
       background-repeat: no-repeat;
     }
@@ -16,6 +16,7 @@
     h3 {
       text-align: center;
     }
+
 
 
     .alert {
@@ -40,6 +41,77 @@
         text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
       }
     }
+
+    .column {
+  float: left;
+  width: 33.3%;
+  padding: 10px 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 1000px) {
+  .column {
+    width: 50%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  text-align: center;
+  background-color: #f1f1f1;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.card:hover {
+  box-shadow: 0 4px 30px 0 rgba(0,0,0,0.4);
+}
+
+img{
+    width: 125px;
+    height: 180px;
+    margin-left: 35%;
+}
+h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 5%;
+}
+
+/* Style for the section content */
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: justify;
+  padding-right: 10%;
+  padding-left: 10%;
+  margin-bottom: 2rem;
+}
+
   </style>
 </head>
 <br>
@@ -47,13 +119,80 @@
 
 <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
   <br><br>
-  <h5 class="display-3 glow">"A hospital alone shows what war is."</h5>
   <br><br><br><br>
 </div>
-    <h3 style="padding-top: 5%">hospital in prishtina</h3>
-    <p style="padding-right: 10%;padding-left: 10%">A Hospital cleaner a cleaning operative is a type of industrial or
-							domestic worker who cleans homes,commercial premises and also clean
+    <h3 style="padding-top: 5%">Hospital in Prishtina</h3>
+    <p style="padding-right: 10%;padding-left: 10%">A Hospital cleaner a cleaning operative is a type of industrial or domestic worker who cleans homes,commercial premises and also clean
 							the Hospital Plateform.A cleaner is someone who takes
 							away garbage and cleans surfaces. Cleaners sometimes repair things,
-							and maintain their equipment in good working.</p>
+							and maintain their equipment in good working.A cleaner is someone who takes
+							away garbage and cleans surfaces. Cleaners sometimes repair things,
+							and maintain their equipment in good working.A cleaner is someone who takes
+							away garbage and cleans surfaces.</p>
+    <br>
+
+    <h3>Team of hospital Prishtina</h3>
+    {% for d in doctor %}
+    <div class="column">
+    <div class="card">
+    <img src="{{ d.photo.url }}">
+    <h2>{{ d.name }}</h2>
+    <h5>0{{ d.mobile }}</h5>
+      <p style="text-align: center">{{ d.special }}</p>
+    </div>
+    </div>
+     {% endfor %}
+
+
+  <footer>
+
+    <div class="row">
+
+      <div class="column">
+
+        <h4>About Us</h4>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in metus euismod, faucibus metus ut, semper nibh. Aenean euismod justo eu enim dapibus suscipit.</p>
+
+      </div>
+
+      <div class="column">
+
+        <h4>Quick Links</h4>
+
+        <ul>
+
+          <li><a href="{% url 'index' %}"><i class="fa fa-angle-right"></i> Home</a></li>
+
+          <li><a href="{% url 'contact' %}"><i class="fa fa-angle-right"></i> Contact us</a></li>
+
+          <li><a href="{% url 'about' %}"><i class="fa fa-angle-right"></i> About</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="column">
+
+        <h4>Connect with Us</h4>
+
+        <ul class="social-icons">
+
+          <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+
+          <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+
+          <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+
+            <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <p class="copyright" style="text-align: center">© 2023 All Rights Reserved</p>
+
+  </footer>
 {% endblock%}

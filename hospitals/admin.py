@@ -6,3 +6,5 @@ admin.site.register(Doctor)
 admin.site.register(Patient)
 admin.site.register(Appointment)
 admin.site.register(Contact)
+admin.site.register(Appointmentuser)
+

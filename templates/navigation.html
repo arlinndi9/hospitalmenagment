@@ -25,16 +25,7 @@
   box-sizing: border-box;
 }
 
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 20%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
+
 
 #myTable {
   border-collapse: collapse;
@@ -87,27 +78,8 @@
 </style>
 
 <style>
-/* width */
-::-webkit-scrollbar {
-  width: 20px;
-}
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: red;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
-}
 
 .nav-link:hover{
   color: lightblue !important;
@@ -142,25 +114,45 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
   <!-- Links -->
    <ul class="navbar-nav pl-5 text-center">
-
-     <li class="nav-item">
-       <a class="nav-link" href="{% url 'index' %}" style="color:white"><ion-icon style="margin-right:2px" name="home-sharp"></ion-icon> Home</a>
+    {% if user.is_authenticated  %}
+          <li class="nav-item">
+       <a class="nav-link" href="{% url 'index' %}" style="color:white">Home</a>
      </li>
 
      <li class="nav-item">
-       <a class="nav-link" href="{% url 'about' %}" style="color:white"><ion-icon style="margin-right:2px" name="people"></ion-icon> About</a>
+       <a class="nav-link" href="{% url 'about' %}" style="color:white">About</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'contact' %}" style="color:white">Contact</a>
+     </li>
+        <li class="nav-item">
+       <a class="nav-link" href="{% url 'create_appointment' %}" style="color:white">Appointment</a>
+     </li>
+         <li class="nav-item">
+       <a class="nav-link" href="{% url 'change_password' %}" style="color:white">Change password</a>
+     </li>
+        <li class="nav-item">
+       <a class="nav-link" href="{% url 'user_appointments' %}" style="color:white">View appointment</a>
+     </li>
+        <li class="nav-item">
+       <a class="nav-link" href="{% url 'logout_view' %}" style="color:white">Logout</a>
+     </li>
+    {% else %}
+         <li class="nav-item">
+       <a class="nav-link" href="{% url 'index' %}" style="color:white">Home</a>
      </li>
 
      <li class="nav-item">
-       <a class="nav-link" href="{% url 'contact' %}" style="color:white"><ion-icon style="margin-right:2px" name="people"></ion-icon> Contact</a>
+       <a class="nav-link" href="{% url 'about' %}" style="color:white">About</a>
      </li>
-
      <li class="nav-item">
-       <a class="nav-link" href="{% url 'login' %}" style="color:white"><i class="fas fa-sign-in-alt" style="margin-right:2px"></i> Admin Login</a>
+       <a class="nav-link" href="{% url 'login' %}" style="color:white">Login</a>
      </li>
-
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'signup' %}" style="color:white">Signup</a>
+     </li>  
+    {% endif %}
    </ul>
-
 </div>
 </nav>
 

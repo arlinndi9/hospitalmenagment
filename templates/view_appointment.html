@@ -21,6 +21,8 @@
 				<tr>
 					<th>Doctor Name</th>
 					<th>Patient Name</th>
+					<th>Patient lastName</th>
+					<th>Patient email</th>
                     <th>Date</th>
 					<th>Time</th>
 					<th>Action</th>
@@ -28,14 +30,16 @@
 			</thead>
 
 			<tbody>
-            {% for i in appointment %}
-			<tr>
-				<td>{{i.doctor}}</td>
-				<td>{{i.patient}}</td>
-				<td>{{i.date1}}</td>
-				<td>{{i.time1}}</td>
+           {% for i in appointment %}
+               <td>{{ i.doctor }}</td>
+               <td>{{ i.firstname }}</td>
+               <td>{{ i.lastname }}</td>
+               <td>{{ i.email }}</td>
+               <td>{{ i.date }}</td>
+               <td>{{ i.time }}</td>
+
 				<td><a href="{% url 'delete_appointment' i.id %}" onclick="return confirm('Are you ready to delete this record ?')" class="btn btn-danger">Delete</a></td>
-			</tr>
+               </tr>
 			{% endfor %}
 			</tbody>
 		</table>

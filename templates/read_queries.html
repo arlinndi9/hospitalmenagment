@@ -13,7 +13,7 @@
 <br><br><br><br>
 <div class="container card shadow m-5">
     <div class="card-body">
-        <h5 class="p-2" style="border-bottom: 2px solid orange">Read Queries</h5>
+        <h5 class="p-2" style="border-bottom: 2px solid orange">Read contact</h5>
 		<div class="container mt-5">
 		<h1 class="text-success text-center"></h1>
             <table id="example" class="table table-striped table-bordered" style="width:80%">
@@ -23,7 +23,10 @@
                                         <th class="d-none d-sm-table-cell">Name</th>
                                         <th class="d-none d-sm-table-cell">Email ID</th>
                                         <th class="d-none d-sm-table-cell">Contact Number</th>
-                                        <th class="d-none d-sm-table-cell" style="width: 15%;">Action</th>
+                                        <th class="d-none d-sm-table-cell">Subject</th>
+                                        <th class="d-none d-sm-table-cell">Message</th>
+                                        <th class="d-none d-sm-table-cell">Action</th>
+
                                     </tr>
                                 </thead>
                                 {% for i in contact %}
@@ -33,7 +36,9 @@
                                         <td class="font-w600">{{i.name}}</td>
                                         <td class="font-w600">{{i.email}}</td>
                                         <td class="font-w600">{{i.contact}}</td>
-                                        <td class="font-w600"><a href="{% url 'view_queries' i.id %}" class="text-primary">View Details</a></td>
+                                        <td class="font-w600">{{i.subject}}</td>
+                                        <td class="font-w600">{{ i.message }}</td>
+                                        <td><a href="{% url 'delete_contact' i.id %}" onclick="return confirm('Are you ready to delete this record ?')" class="btn btn-danger">Delete</a></td>
                                     </tr>
                                         {% endfor %}
                                 </tbody>
